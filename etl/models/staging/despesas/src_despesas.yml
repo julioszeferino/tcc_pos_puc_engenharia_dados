@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: despesas
+    schema: raw
+    database: despesas
+    tables:
+      - name: json_diarias
+        loaded_at_field: data_criacao_registro
+        warn_after: {count: 1, period: month}
+        error_after: {count: 2, period: month}
+      - name: json_empenhos
+        loaded_at_field: data_criacao_registro
+        warn_after: {count: 1, period: month}
+        error_after: {count: 2, period: month}
+      - name: json_liquidacoes
+        loaded_at_field: data_criacao_registro
+        warn_after: {count: 1, period: month}
+        error_after: {count: 2, period: month}
+      - name: json_obras
+        loaded_at_field: data_criacao_registro
+        warn_after: {count: 1, period: month}
+        error_after: {count: 2, period: month}
+      - name: json_pagamentos
+        loaded_at_field: data_criacao_registro
+        warn_after: {count: 1, period: month}
+        error_after: {count: 2, period: month}

@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: stg_diarias
+  - name: stg_pagamentos
+  - name: str_datas

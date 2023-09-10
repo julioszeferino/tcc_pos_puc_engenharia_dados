@@ -1,0 +1,173 @@
+[0m12:26:43.647090 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa2e2ffa4d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa2e367c1c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa2e367c070>]}
+
+
+============================== 12:26:43.649376 | 41d57a18-056b-46ac-89b6-2c65539b55eb ==============================
+[0m12:26:43.649376 [info ] [MainThread]: Running with dbt=1.6.2
+[0m12:26:43.649967 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'version_check': 'True', 'profiles_dir': '/home/julio/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt init', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m12:26:49.961682 [debug] [MainThread]: Starter project path: /home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/include/starter_project
+[0m12:26:49.965032 [info ] [MainThread]: 
+Your new dbt project "tcc" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:26:49.965596 [info ] [MainThread]: Setting up your profile.
+[0m12:26:52.663286 [debug] [MainThread]: Command `dbt init` succeeded at 12:26:52.663049 after 9.02 seconds
+[0m12:26:52.663739 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa2e2ffa4d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa2e24f68f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa2e364f7f0>]}
+[0m12:26:52.664222 [debug] [MainThread]: Flushing usage events
+[0m12:27:11.380251 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff6332fe470>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff633953fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff633980160>]}
+
+
+============================== 12:27:11.382353 | 9e9e5393-ad8c-4b65-88b7-7b1021d1afc7 ==============================
+[0m12:27:11.382353 [info ] [MainThread]: Running with dbt=1.6.2
+[0m12:27:11.382950 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': '/home/julio/.dbt', 'log_path': 'logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt init', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m12:27:33.223403 [debug] [MainThread]: Starter project path: /home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/include/starter_project
+[0m12:27:33.226531 [info ] [MainThread]: 
+Your new dbt project "dbtTCC" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:27:33.227043 [info ] [MainThread]: Setting up your profile.
+[0m12:27:36.880331 [error] [MainThread]: Encountered an error:
+
+[0m12:27:36.881538 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/cli/requires.py", line 87, in wrapper
+    result, success = func(*args, **kwargs)
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/cli/requires.py", line 72, in wrapper
+    return func(*args, **kwargs)
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/cli/main.py", line 468, in init
+    results = task.run()
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/task/init.py", line 307, in run
+    adapter = self.ask_for_adapter_choice()
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/task/init.py", line 233, in ask_for_adapter_choice
+    numeric_choice = click.prompt(prompt_msg, type=click.INT)
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/click/termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/click/termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m12:27:36.882529 [debug] [MainThread]: Command `dbt init` failed at 12:27:36.882370 after 25.51 seconds
+[0m12:27:36.882970 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff6332fe470>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff633953a00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ff633953700>]}
+[0m12:27:36.883339 [debug] [MainThread]: Flushing usage events
+[0m12:27:44.523582 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4820c524d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f48213101c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4821310070>]}
+
+
+============================== 12:27:44.525755 | c271f466-a2a3-4176-b7e3-20dce7becc61 ==============================
+[0m12:27:44.525755 [info ] [MainThread]: Running with dbt=1.6.2
+[0m12:27:44.526433 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/home/julio/.dbt', 'log_path': 'logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'log_format': 'default', 'invocation_command': 'dbt init', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m12:27:55.580517 [debug] [MainThread]: Starter project path: /home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/include/starter_project
+[0m12:27:55.583978 [info ] [MainThread]: 
+Your new dbt project "dbt_tcc" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:27:55.584937 [info ] [MainThread]: Setting up your profile.
+[0m12:28:07.698352 [error] [MainThread]: Encountered an error:
+
+[0m12:28:07.699591 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/cli/requires.py", line 87, in wrapper
+    result, success = func(*args, **kwargs)
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/cli/requires.py", line 72, in wrapper
+    return func(*args, **kwargs)
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/cli/main.py", line 468, in init
+    results = task.run()
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/task/init.py", line 307, in run
+    adapter = self.ask_for_adapter_choice()
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/task/init.py", line 233, in ask_for_adapter_choice
+    numeric_choice = click.prompt(prompt_msg, type=click.INT)
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/click/termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+  File "/home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/click/termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m12:28:07.700579 [debug] [MainThread]: Command `dbt init` failed at 12:28:07.700425 after 23.18 seconds
+[0m12:28:07.700971 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f4820c524d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f48212e37c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f48212e3790>]}
+[0m12:28:07.701342 [debug] [MainThread]: Flushing usage events
+[0m12:28:15.076815 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f38ff8824d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f39000401f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3900040070>]}
+
+
+============================== 12:28:15.079352 | ba4add64-c60d-4561-89de-b87ae41d0b78 ==============================
+[0m12:28:15.079352 [info ] [MainThread]: Running with dbt=1.6.2
+[0m12:28:15.080032 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'profiles_dir': '/home/julio/.dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt init', 'send_anonymous_usage_stats': 'True'}
+[0m12:29:04.529686 [debug] [MainThread]: Starter project path: /home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/include/starter_project
+[0m12:29:04.533412 [info ] [MainThread]: 
+Your new dbt project "dbtTcc" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:29:04.534255 [info ] [MainThread]: Setting up your profile.
+[0m12:29:08.228245 [debug] [MainThread]: Command `dbt init` succeeded at 12:29:08.228094 after 53.16 seconds
+[0m12:29:08.228670 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f38ff8824d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f38fed928f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3900013730>]}
+[0m12:29:08.229614 [debug] [MainThread]: Flushing usage events
+[0m12:30:28.623282 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f06e630e4a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f06e6a9ff40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f06e6acc1c0>]}
+
+
+============================== 12:30:28.625669 | bed27181-38fe-4490-89b8-d6fb740778a1 ==============================
+[0m12:30:28.625669 [info ] [MainThread]: Running with dbt=1.6.2
+[0m12:30:28.626336 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': 'logs', 'debug': 'False', 'profiles_dir': '/home/julio/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'invocation_command': 'dbt init', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m12:30:30.931350 [debug] [MainThread]: Starter project path: /home/julio/.local/share/virtualenvs/tcc-nbnhf2DO/lib/python3.10/site-packages/dbt/include/starter_project
+[0m12:30:30.934870 [info ] [MainThread]: 
+Your new dbt project "etl" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:30:30.935543 [info ] [MainThread]: Setting up your profile.
+[0m12:30:33.051220 [debug] [MainThread]: Command `dbt init` succeeded at 12:30:33.051071 after 4.43 seconds
+[0m12:30:33.051661 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f06e630e4a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f06e6a9ff40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f06e6acc370>]}
+[0m12:30:33.052166 [debug] [MainThread]: Flushing usage events

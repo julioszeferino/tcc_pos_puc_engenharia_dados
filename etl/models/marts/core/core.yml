@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: dim_tempo
+    columns:
+      - name: ano
+        type: int
+        tests:
+          - not_null
+      - name: mes
+        type: int
+        tests:
+          - not_null
+      - name: data_criacao_registro
+        type: date
+        tests:
+          - not_null
+
+  - name: dim_favorecidos
+    columns:
+      - name: id
+        type: int
+        tests:
+          - not_null
+          - unique
+      - name: nome_favorecido
+        type: string
+        tests:
+          - not_null
+          - unique
+      - name: data_criacao_registro
+        type: date
+        tests:
+          - not_null
+
+  - name: dim_elemento_despesa
+    columns:
+      - name: id
+        type: int
+        tests:
+          - not_null
+          - unique
+      - name: elemento_despesa
+        type: string
+        tests:
+          - not_null
+          - unique
+      - name: data_criacao_registro
+        type: date
+        tests:
+          - not_null
+
+  - name: fato_diarias_pagamentos
+    columns:
+      - name: ano
+        type: int
+        tests:
+          - not_null
+      - name: mes
+        type: int
+        tests:
+          - not_null
+      - name: id_elemento_despesa
+        type: int
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_elemento_despesa')
+              field: id
+      - name: id_favorecido
+        type: int
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_favorecidos')
+              field: id
+      - name: tipo_despesa
+        type: string
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - 'DIARIA'
+                - 'PAGAMENTO'

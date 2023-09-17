@@ -6,23 +6,28 @@ despesas:
   outputs:
     dev:
       type: postgres
-      host: localhost
-      user: julio
-      password: julio
-      port: 5432
-      dbname: despesas  # or database instead of dbname
+      # host: dw
+      # user: julio
+      # password: julio
+      # port: 5432
+      # dbname: despesas
+      host: "{{ env_var('DB_TCC_HOST') }}"
+      user: "{{ env_var('DB_TCC_USER') }}"
+      password: "{{ env_var('DB_TCC_PASS') }}"
+      port: "{{ env_var('DB_TCC_PORT') }}"
+      dbname: "{{ env_var('DB_TCC_DBNAME') }}"
       schema: julio_zeferino
-      keepalives_idle: 0 # default 0, indicating the system default. See below
-      connect_timeout: 10 # default 10 seconds
-      retries: 1  # default 1 retry on error/timeout when opening connections
+      keepalives_idle: 0
+      connect_timeout: 10
+      retries: 1
     prod:
       type: postgres
-      host: localhost
-      user: julio
-      password: julio
-      port: 5432
-      dbname: despesas  # or database instead of dbname
+      host: "{{ env_var('DB_TCC_HOST') }}"
+      user: "{{ env_var('DB_TCC_USER') }}"
+      password: "{{ env_var('DB_TCC_PASS') }}"
+      port: "{{ env_var('DB_TCC_PORT') }}"
+      dbname: "{{ env_var('DB_TCC_DBNAME') }}"
       schema: warehouse
-      keepalives_idle: 0 # default 0, indicating the system default. See below
-      connect_timeout: 10 # default 10 seconds
-      retries: 2  # default 1 retry on error/timeout when opening connections
+      keepalives_idle: 0
+      connect_timeout: 10
+      retries: 2

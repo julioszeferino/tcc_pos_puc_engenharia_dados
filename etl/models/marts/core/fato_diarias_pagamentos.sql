@@ -1,6 +1,6 @@
 WITH diarias AS (
     SELECT
-        CAST(SPLIT_PART(ano, ' - ', 1) AS INTEGER) as ano,
+        CAST(ano AS INTEGER) as ano,
         CAST(SPLIT_PART(mes, ' - ', 1) AS INTEGER) as mes,
         UPPER(TRIM(SPLIT_PART(elemento_despesa, '-', 2))) as elemento_despesa,
         UPPER(nome_favorecido) as nome_favorecido,
@@ -9,7 +9,7 @@ WITH diarias AS (
     FROM {{ ref('stg_diarias')}}
 ), pagamentos AS (
     SELECT
-        CAST(SPLIT_PART(ano, ' - ', 1) AS INTEGER) as ano,
+        CAST(ano AS INTEGER) as ano,
         CAST(SPLIT_PART(mes, ' - ', 1) AS INTEGER) as mes,
         UPPER(TRIM(SPLIT_PART(elemento_despesa, '-', 2))) as elemento_despesa,
         UPPER(nome_favorecido) as nome_favorecido,
@@ -22,8 +22,7 @@ WITH diarias AS (
     SELECT * FROM pagamentos
 ), fato_diarias_pagamentos AS (
     SELECT
-        temp.ano,
-        temp.mes,
+        CONCAT(temp.ano, LPAD(temp.mes, 2, '0'), '01') AS id_tempo,
         ded.id as id_elemento_despesa,
         df.id as id_favorecido,
         temp.tipo_despesa,

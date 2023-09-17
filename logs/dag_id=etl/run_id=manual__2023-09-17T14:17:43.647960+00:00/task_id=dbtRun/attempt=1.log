@@ -1,0 +1,56 @@
+[2023-09-17T18:32:55.282+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.dbtRun manual__2023-09-17T14:17:43.647960+00:00 [queued]>
+[2023-09-17T18:32:55.295+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.dbtRun manual__2023-09-17T14:17:43.647960+00:00 [queued]>
+[2023-09-17T18:32:55.296+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-17T18:32:55.317+0000] {taskinstance.py:1380} INFO - Executing <Task(_PythonDecoratedOperator): dbtRun> on 2023-09-17 14:17:43.647960+00:00
+[2023-09-17T18:32:55.323+0000] {standard_task_runner.py:57} INFO - Started process 1556 to run task
+[2023-09-17T18:32:55.327+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'etl', 'dbtRun', 'manual__2023-09-17T14:17:43.647960+00:00', '--job-id', '151', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpb5wmgj05']
+[2023-09-17T18:32:55.331+0000] {standard_task_runner.py:85} INFO - Job 151: Subtask dbtRun
+[2023-09-17T18:32:55.402+0000] {task_command.py:415} INFO - Running <TaskInstance: etl.dbtRun manual__2023-09-17T14:17:43.647960+00:00 [running]> on host 2b62bebe73f6
+[2023-09-17T18:32:55.634+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='dbtRun' AIRFLOW_CTX_EXECUTION_DATE='2023-09-17T14:17:43.647960+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-17T14:17:43.647960+00:00'
+[2023-09-17T18:32:55.635+0000] {logging_mixin.py:151} INFO - Executando o comando <cd /opt/***/dbt/etl && dbt run -t prod>
+[2023-09-17T18:33:02.037+0000] {logging_mixin.py:151} INFO - Resultado: 18:32:58  Running with dbt=1.6.2
+18:32:58  Registered adapter: postgres=1.6.2
+18:32:58  Unable to do partial parsing because profile has changed
+18:32:59  [WARNING]: Did not find matching node for patch with name 'str_datas' in the 'models' section of file 'models/staging/despesas/stg_despesas.yml'
+18:33:00  Found 7 models, 22 tests, 5 sources, 0 exposures, 0 metrics, 467 macros, 0 groups, 0 semantic models
+18:33:00  
+18:33:00  Concurrency: 1 threads (target='prod')
+18:33:00  
+18:33:00  1 of 7 START sql view model warehouse.stg_datas ................................ [RUN]
+18:33:00  1 of 7 OK created sql view model warehouse.stg_datas ........................... [CREATE VIEW in 0.19s]
+18:33:00  2 of 7 START sql view model warehouse.stg_diarias .............................. [RUN]
+18:33:00  2 of 7 OK created sql view model warehouse.stg_diarias ......................... [CREATE VIEW in 0.08s]
+18:33:00  3 of 7 START sql view model warehouse.stg_pagamentos ........................... [RUN]
+18:33:00  3 of 7 OK created sql view model warehouse.stg_pagamentos ...................... [CREATE VIEW in 0.07s]
+18:33:00  4 of 7 START sql table model warehouse.dim_tempo ............................... [RUN]
+18:33:00  4 of 7 ERROR creating sql table model warehouse.dim_tempo ...................... [ERROR in 0.06s]
+18:33:00  5 of 7 START sql table model warehouse.dim_elemento_despesa .................... [RUN]
+18:33:00  5 of 7 OK created sql table model warehouse.dim_elemento_despesa ............... [SELECT 84 in 0.08s]
+18:33:00  6 of 7 START sql table model warehouse.dim_favorecidos ......................... [RUN]
+18:33:00  6 of 7 OK created sql table model warehouse.dim_favorecidos .................... [SELECT 433 in 0.14s]
+18:33:00  7 of 7 START sql table model warehouse.fato_diarias_pagamentos ................. [RUN]
+18:33:00  7 of 7 ERROR creating sql table model warehouse.fato_diarias_pagamentos ........ [ERROR in 0.04s]
+18:33:00  
+18:33:00  Finished running 3 view models, 4 table models in 0 hours 0 minutes and 0.79 seconds (0.79s).
+18:33:00  
+18:33:00  Completed with 2 errors and 0 warnings:
+18:33:00  
+18:33:00    Database Error in model dim_tempo (models/marts/core/dim_tempo.sql)
+  function lpad(integer, integer, unknown) does not exist
+  LINE 13:     CONCAT(year_number, LPAD(month_of_year, 2, '0'), '01') A...
+                                   ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  compiled Code at target/run/despesas/models/marts/core/dim_tempo.sql
+18:33:00  
+18:33:00    Database Error in model fato_diarias_pagamentos (models/marts/core/fato_diarias_pagamentos.sql)
+  function lpad(integer, integer, unknown) does not exist
+  LINE 36:         CONCAT(temp.ano, LPAD(temp.mes, 2, '0'), '01') AS id...
+                                    ^
+  HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+  compiled Code at target/run/despesas/models/marts/core/fato_diarias_pagamentos.sql
+18:33:00  
+18:33:00  Done. PASS=5 WARN=0 ERROR=2 SKIP=0 TOTAL=7
+[2023-09-17T18:33:02.038+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-17T18:33:02.048+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=etl, task_id=dbtRun, execution_date=20230917T141743, start_date=20230917T183255, end_date=20230917T183302
+[2023-09-17T18:33:02.089+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-17T18:33:02.105+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,86 @@
+[2023-09-17T18:12:53.417+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.executaCrawler manual__2023-09-17T14:17:43.647960+00:00 [queued]>
+[2023-09-17T18:12:53.424+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.executaCrawler manual__2023-09-17T14:17:43.647960+00:00 [queued]>
+[2023-09-17T18:12:53.424+0000] {taskinstance.py:1359} INFO - Starting attempt 4 of 4
+[2023-09-17T18:12:53.446+0000] {taskinstance.py:1380} INFO - Executing <Task(_PythonDecoratedOperator): executaCrawler> on 2023-09-17 14:17:43.647960+00:00
+[2023-09-17T18:12:53.450+0000] {standard_task_runner.py:57} INFO - Started process 490 to run task
+[2023-09-17T18:12:53.452+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'etl', 'executaCrawler', 'manual__2023-09-17T14:17:43.647960+00:00', '--job-id', '148', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmptlww4hh8']
+[2023-09-17T18:12:53.454+0000] {standard_task_runner.py:85} INFO - Job 148: Subtask executaCrawler
+[2023-09-17T18:12:53.502+0000] {task_command.py:415} INFO - Running <TaskInstance: etl.executaCrawler manual__2023-09-17T14:17:43.647960+00:00 [running]> on host 2b62bebe73f6
+[2023-09-17T18:12:54.002+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='executaCrawler' AIRFLOW_CTX_EXECUTION_DATE='2023-09-17T14:17:43.647960+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-17T14:17:43.647960+00:00'
+[2023-09-17T18:12:54.003+0000] {logging_mixin.py:151} INFO - Executando o crawler...
+[2023-09-17T18:12:54.004+0000] {logging_mixin.py:151} INFO - Período de referência: 07/2023
+[2023-09-17T18:12:54.004+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_empenhos'
+[2023-09-17T18:12:54.027+0000] {logging_mixin.py:151} INFO - Requisitando a URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_empenhos?ano=2023&mes=7
+[2023-09-17T18:12:54.931+0000] {logging_mixin.py:151} INFO - Apagando dados no banco de dados...
+[2023-09-17T18:12:54.948+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column "ano_referencia" does not exist
+LINE 3:             WHERE ano_referencia = 2023
+                          ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/decorators/base.py", line 221, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/etl.py", line 9, in executaCrawler
+    main()
+  File "/opt/airflow/dags/crawler.py", line 112, in main
+    report.run()
+  File "/opt/airflow/dags/crawler.py", line 84, in run
+    self.insereDados()
+  File "/opt/airflow/dags/crawler.py", line 74, in insereDados
+    self._apagaDadosDb(engine, str(self.__path).replace('/', ''))
+  File "/opt/airflow/dags/crawler.py", line 64, in _apagaDadosDb
+    engine.execute(f"""
+  File "<string>", line 2, in execute
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/deprecations.py", line 468, in warned
+    return fn(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3267, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1370, in execute
+    return self._exec_driver_sql(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1674, in _exec_driver_sql
+    ret = self._execute_context(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "ano_referencia" does not exist
+LINE 3:             WHERE ano_referencia = 2023
+                          ^
+
+[SQL: 
+            DELETE FROM json_empenhos
+            WHERE ano_referencia = 2023
+            AND mes_referencia = 7
+        ]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2023-09-17T18:12:54.963+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=etl, task_id=executaCrawler, execution_date=20230917T141743, start_date=20230917T181253, end_date=20230917T181254
+[2023-09-17T18:12:54.980+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 148 for task executaCrawler ((psycopg2.errors.UndefinedColumn) column "ano_referencia" does not exist
+LINE 3:             WHERE ano_referencia = 2023
+                          ^
+
+[SQL: 
+            DELETE FROM json_empenhos
+            WHERE ano_referencia = 2023
+            AND mes_referencia = 7
+        ]
+(Background on this error at: https://sqlalche.me/e/14/f405); 490)
+[2023-09-17T18:12:54.995+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-17T18:12:55.015+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

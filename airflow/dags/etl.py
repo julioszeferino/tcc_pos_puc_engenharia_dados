@@ -1,0 +1,32 @@
+from typing import List
+from datetime import datetime, timedelta
+from crawler import main
+from airflow.decorators import task, dag
+
+@task.python
+def executaCrawler():
+    print("Executando o crawler...")
+    main()
+    print("Crawler executado com sucesso!")
+
+@task()
+def dbtRun():
+    comando: str = "cd /opt/airflow/dbt/etl && dbt run -t prod"
+    print(f"Executando o comando <{comando}>")
+    import subprocess
+    resultado: subprocess.CompletedProcess = subprocess.run(comando, shell=True, capture_output=True, text=True)
+    print(f"Resultado: {resultado.stdout}")
+
+@dag(
+    dag_id="etl",
+    description="ETL de dados do projeto de despesas",
+    start_date=datetime(2022, 9, 14),
+    schedule_interval=None,
+    tags=["meu teste", "teste"],
+    catchup=False
+)
+def dag_etl():
+
+    executaCrawler() >> dbtRun()
+
+dag_etl = dag_etl()

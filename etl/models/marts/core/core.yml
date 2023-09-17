@@ -3,6 +3,11 @@ version: 2
 models:
   - name: dim_tempo
     columns:
+      - name: id
+        type: int
+        tests:
+          - not_null
+          - unique
       - name: ano
         type: int
         tests:
@@ -52,11 +57,7 @@ models:
 
   - name: fato_diarias_pagamentos
     columns:
-      - name: ano
-        type: int
-        tests:
-          - not_null
-      - name: mes
+      - name: id_tempo
         type: int
         tests:
           - not_null

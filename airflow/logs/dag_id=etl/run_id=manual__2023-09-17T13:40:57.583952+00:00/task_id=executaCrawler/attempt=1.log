@@ -1,0 +1,40 @@
+[2023-09-17T13:40:59.725+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.executaCrawler manual__2023-09-17T13:40:57.583952+00:00 [queued]>
+[2023-09-17T13:40:59.736+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.executaCrawler manual__2023-09-17T13:40:57.583952+00:00 [queued]>
+[2023-09-17T13:40:59.736+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-17T13:40:59.750+0000] {taskinstance.py:1380} INFO - Executing <Task(_PythonDecoratedOperator): executaCrawler> on 2023-09-17 13:40:57.583952+00:00
+[2023-09-17T13:40:59.755+0000] {standard_task_runner.py:57} INFO - Started process 222 to run task
+[2023-09-17T13:40:59.760+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'etl', 'executaCrawler', 'manual__2023-09-17T13:40:57.583952+00:00', '--job-id', '135', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpg1juqq9b']
+[2023-09-17T13:40:59.765+0000] {standard_task_runner.py:85} INFO - Job 135: Subtask executaCrawler
+[2023-09-17T13:40:59.821+0000] {task_command.py:415} INFO - Running <TaskInstance: etl.executaCrawler manual__2023-09-17T13:40:57.583952+00:00 [running]> on host d270cabd4259
+[2023-09-17T13:41:00.090+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='executaCrawler' AIRFLOW_CTX_EXECUTION_DATE='2023-09-17T13:40:57.583952+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-17T13:40:57.583952+00:00'
+[2023-09-17T13:41:00.091+0000] {logging_mixin.py:151} INFO - Executando o crawler...
+[2023-09-17T13:41:00.091+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_empenhos'
+[2023-09-17T13:41:00.103+0000] {logging_mixin.py:151} INFO - URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_empenhos?ano=2023&mes=7
+[2023-09-17T13:41:01.216+0000] {logging_mixin.py:151} INFO - Inserindo dados no banco de dados...
+[2023-09-17T13:41:01.328+0000] {logging_mixin.py:151} INFO - Dados inseridos com sucesso!
+[2023-09-17T13:41:01.329+0000] {logging_mixin.py:151} INFO - Rota '/json_empenhos' requisitada com sucesso! Aguardando 60 segundos para a próxima requisição...'
+[2023-09-17T13:42:01.375+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_liquidacoes'
+[2023-09-17T13:42:01.389+0000] {logging_mixin.py:151} INFO - URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_liquidacoes?ano=2023&mes=7
+[2023-09-17T13:42:02.490+0000] {logging_mixin.py:151} INFO - Inserindo dados no banco de dados...
+[2023-09-17T13:42:02.662+0000] {logging_mixin.py:151} INFO - Dados inseridos com sucesso!
+[2023-09-17T13:42:02.664+0000] {logging_mixin.py:151} INFO - Rota '/json_liquidacoes' requisitada com sucesso! Aguardando 60 segundos para a próxima requisição...'
+[2023-09-17T13:43:02.721+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_pagamentos'
+[2023-09-17T13:43:02.735+0000] {logging_mixin.py:151} INFO - URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_pagamentos?ano=2023&mes=7
+[2023-09-17T13:43:03.834+0000] {logging_mixin.py:151} INFO - Inserindo dados no banco de dados...
+[2023-09-17T13:43:03.967+0000] {logging_mixin.py:151} INFO - Dados inseridos com sucesso!
+[2023-09-17T13:43:03.969+0000] {logging_mixin.py:151} INFO - Rota '/json_pagamentos' requisitada com sucesso! Aguardando 60 segundos para a próxima requisição...'
+[2023-09-17T13:44:04.024+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_diarias'
+[2023-09-17T13:44:04.029+0000] {logging_mixin.py:151} INFO - URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_diarias?ano=2023&mes=7
+[2023-09-17T13:44:05.761+0000] {logging_mixin.py:151} INFO - Inserindo dados no banco de dados...
+[2023-09-17T13:44:05.807+0000] {logging_mixin.py:151} INFO - Dados inseridos com sucesso!
+[2023-09-17T13:44:05.808+0000] {logging_mixin.py:151} INFO - Rota '/json_diarias' requisitada com sucesso! Aguardando 60 segundos para a próxima requisição...'
+[2023-09-17T13:45:05.837+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_obras'
+[2023-09-17T13:45:05.852+0000] {logging_mixin.py:151} INFO - URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_obras?ano=2023&mes=7
+[2023-09-17T13:45:06.276+0000] {logging_mixin.py:151} INFO - Inserindo dados no banco de dados...
+[2023-09-17T13:45:06.302+0000] {logging_mixin.py:151} INFO - Dados inseridos com sucesso!
+[2023-09-17T13:45:06.302+0000] {logging_mixin.py:151} INFO - Rota '/json_obras' requisitada com sucesso! Aguardando 60 segundos para a próxima requisição...'
+[2023-09-17T13:46:06.333+0000] {logging_mixin.py:151} INFO - Crawler executado com sucesso!
+[2023-09-17T13:46:06.333+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-17T13:46:06.353+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=etl, task_id=executaCrawler, execution_date=20230917T134057, start_date=20230917T134059, end_date=20230917T134606
+[2023-09-17T13:46:06.413+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-17T13:46:06.489+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

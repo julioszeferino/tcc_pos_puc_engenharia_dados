@@ -1,0 +1,37 @@
+[2023-09-17T18:10:04.513+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.executaCrawler manual__2023-09-17T14:17:43.647960+00:00 [queued]>
+[2023-09-17T18:10:04.524+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.executaCrawler manual__2023-09-17T14:17:43.647960+00:00 [queued]>
+[2023-09-17T18:10:04.524+0000] {taskinstance.py:1359} INFO - Starting attempt 3 of 3
+[2023-09-17T18:10:04.539+0000] {taskinstance.py:1380} INFO - Executing <Task(_PythonDecoratedOperator): executaCrawler> on 2023-09-17 14:17:43.647960+00:00
+[2023-09-17T18:10:04.543+0000] {standard_task_runner.py:57} INFO - Started process 338 to run task
+[2023-09-17T18:10:04.546+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'etl', 'executaCrawler', 'manual__2023-09-17T14:17:43.647960+00:00', '--job-id', '147', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpe0nyaqk6']
+[2023-09-17T18:10:04.548+0000] {standard_task_runner.py:85} INFO - Job 147: Subtask executaCrawler
+[2023-09-17T18:10:04.594+0000] {task_command.py:415} INFO - Running <TaskInstance: etl.executaCrawler manual__2023-09-17T14:17:43.647960+00:00 [running]> on host 2b62bebe73f6
+[2023-09-17T18:10:04.941+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='executaCrawler' AIRFLOW_CTX_EXECUTION_DATE='2023-09-17T14:17:43.647960+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-17T14:17:43.647960+00:00'
+[2023-09-17T18:10:04.942+0000] {logging_mixin.py:151} INFO - Executando o crawler...
+[2023-09-17T18:10:04.942+0000] {logging_mixin.py:151} INFO - Período de referência: 07/2023
+[2023-09-17T18:10:04.942+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_empenhos'
+[2023-09-17T18:10:04.959+0000] {logging_mixin.py:151} INFO - Requisitando a URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_empenhos?ano=2023&mes=7
+[2023-09-17T18:10:05.729+0000] {logging_mixin.py:151} INFO - Tipo engine:  <class 'sqlalchemy.engine.base.Engine'>
+[2023-09-17T18:10:05.729+0000] {taskinstance.py:1935} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/decorators/base.py", line 221, in execute
+    return_value = super().execute(context)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/etl.py", line 9, in executaCrawler
+    main()
+  File "/opt/airflow/dags/crawler.py", line 114, in main
+    report.run()
+  File "/opt/airflow/dags/crawler.py", line 86, in run
+    self.insereDados()
+  File "/opt/airflow/dags/crawler.py", line 75, in insereDados
+    self._apagaDadosDb(engine, str(self.__path).replace('/', ''))
+  File "/opt/airflow/dags/crawler.py", line 62, in _apagaDadosDb
+    engine = criaEngine(self.__bd)
+AttributeError: 'Report' object has no attribute '_Report__bd'
+[2023-09-17T18:10:05.739+0000] {taskinstance.py:1398} INFO - Marking task as FAILED. dag_id=etl, task_id=executaCrawler, execution_date=20230917T141743, start_date=20230917T181004, end_date=20230917T181005
+[2023-09-17T18:10:05.753+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 147 for task executaCrawler ('Report' object has no attribute '_Report__bd'; 338)
+[2023-09-17T18:10:05.766+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-09-17T18:10:05.788+0000] {taskinstance.py:2776} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,76 @@
+[2023-09-17T21:45:27.673+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.executaCrawler manual__2023-09-17T21:45:25.685736+00:00 [queued]>
+[2023-09-17T21:45:27.681+0000] {taskinstance.py:1157} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.executaCrawler manual__2023-09-17T21:45:25.685736+00:00 [queued]>
+[2023-09-17T21:45:27.681+0000] {taskinstance.py:1359} INFO - Starting attempt 1 of 1
+[2023-09-17T21:45:27.707+0000] {taskinstance.py:1380} INFO - Executing <Task(_PythonDecoratedOperator): executaCrawler> on 2023-09-17 21:45:25.685736+00:00
+[2023-09-17T21:45:27.711+0000] {standard_task_runner.py:57} INFO - Started process 7082 to run task
+[2023-09-17T21:45:27.713+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'etl', 'executaCrawler', 'manual__2023-09-17T21:45:25.685736+00:00', '--job-id', '159', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpg25a4fb7']
+[2023-09-17T21:45:27.715+0000] {standard_task_runner.py:85} INFO - Job 159: Subtask executaCrawler
+[2023-09-17T21:45:27.773+0000] {task_command.py:415} INFO - Running <TaskInstance: etl.executaCrawler manual__2023-09-17T21:45:25.685736+00:00 [running]> on host 34065565226b
+[2023-09-17T21:45:28.107+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='executaCrawler' AIRFLOW_CTX_EXECUTION_DATE='2023-09-17T21:45:25.685736+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-09-17T21:45:25.685736+00:00'
+[2023-09-17T21:45:28.109+0000] {logging_mixin.py:151} INFO - Executando o crawler...
+[2023-09-17T21:45:28.110+0000] {logging_mixin.py:151} INFO - Período de referência: 07/2023
+[2023-09-17T21:45:28.110+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_empenhos'
+[2023-09-17T21:45:28.117+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:45 - Requisitando a URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_empenhos?ano=2023&mes=7
+[2023-09-17T21:45:29.172+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:45 - Apagando dados da tabela json_empenhos no mes 7/2023
+[2023-09-17T21:45:29.172+0000] {logging_mixin.py:151} INFO - 
+            DELETE FROM json_empenhos
+            WHERE CAST(ano AS INTEGER) = 2023
+            AND CAST(SPLIT_PART(mes, ' - ', 1) AS INTEGER) = 7
+        
+[2023-09-17T21:45:29.227+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:45 - Dados apagados com sucesso!
+[2023-09-17T21:45:29.228+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:45 - Inserindo dados no banco de dados.
+[2023-09-17T21:45:29.423+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:45 - Dados inseridos com sucesso!
+[2023-09-17T21:45:29.425+0000] {logging_mixin.py:151} INFO - Rota '/json_empenhos' requisitada com sucesso! Aguardando 60 segundos para a próxima requisição...'
+[2023-09-17T21:46:29.458+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_liquidacoes'
+[2023-09-17T21:46:29.469+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:46 - Requisitando a URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_liquidacoes?ano=2023&mes=7
+[2023-09-17T21:46:30.561+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:46 - Apagando dados da tabela json_liquidacoes no mes 7/2023
+[2023-09-17T21:46:30.562+0000] {logging_mixin.py:151} INFO - 
+            DELETE FROM json_liquidacoes
+            WHERE CAST(ano AS INTEGER) = 2023
+            AND CAST(SPLIT_PART(mes, ' - ', 1) AS INTEGER) = 7
+        
+[2023-09-17T21:46:30.599+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:46 - Dados apagados com sucesso!
+[2023-09-17T21:46:30.599+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:46 - Inserindo dados no banco de dados.
+[2023-09-17T21:46:30.755+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:46 - Dados inseridos com sucesso!
+[2023-09-17T21:46:30.757+0000] {logging_mixin.py:151} INFO - Rota '/json_liquidacoes' requisitada com sucesso! Aguardando 60 segundos para a próxima requisição...'
+[2023-09-17T21:47:30.817+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_pagamentos'
+[2023-09-17T21:47:30.830+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:47 - Requisitando a URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_pagamentos?ano=2023&mes=7
+[2023-09-17T21:47:31.795+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:47 - Apagando dados da tabela json_pagamentos no mes 7/2023
+[2023-09-17T21:47:31.795+0000] {logging_mixin.py:151} INFO - 
+            DELETE FROM json_pagamentos
+            WHERE CAST(ano AS INTEGER) = 2023
+            AND CAST(SPLIT_PART(mes, ' - ', 1) AS INTEGER) = 7
+        
+[2023-09-17T21:47:31.812+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:47 - Dados apagados com sucesso!
+[2023-09-17T21:47:31.812+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:47 - Inserindo dados no banco de dados.
+[2023-09-17T21:47:31.925+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:47 - Dados inseridos com sucesso!
+[2023-09-17T21:47:31.927+0000] {logging_mixin.py:151} INFO - Rota '/json_pagamentos' requisitada com sucesso! Aguardando 60 segundos para a próxima requisição...'
+[2023-09-17T21:48:31.987+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_diarias'
+[2023-09-17T21:48:32.000+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:48 - Requisitando a URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_diarias?ano=2023&mes=7
+[2023-09-17T21:48:33.963+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:48 - Apagando dados da tabela json_diarias no mes 7/2023
+[2023-09-17T21:48:33.963+0000] {logging_mixin.py:151} INFO - 
+            DELETE FROM json_diarias
+            WHERE CAST(ano AS INTEGER) = 2023
+            AND CAST(SPLIT_PART(mes, ' - ', 1) AS INTEGER) = 7
+        
+[2023-09-17T21:48:33.976+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:48 - Dados apagados com sucesso!
+[2023-09-17T21:48:33.977+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:48 - Inserindo dados no banco de dados.
+[2023-09-17T21:48:33.992+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:48 - Dados inseridos com sucesso!
+[2023-09-17T21:48:33.993+0000] {logging_mixin.py:151} INFO - Rota '/json_diarias' requisitada com sucesso! Aguardando 60 segundos para a próxima requisição...'
+[2023-09-17T21:49:34.053+0000] {logging_mixin.py:151} INFO - Requisitando a Rota: '/json_obras'
+[2023-09-17T21:49:34.065+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:49 - Requisitando a URL: https://trescoracoes-mg.portaltp.com.br/api/transparencia.asmx/json_obras?ano=2023&mes=7
+[2023-09-17T21:49:34.467+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:49 - Apagando dados da tabela json_obras no mes 7/2023
+[2023-09-17T21:49:34.468+0000] {logging_mixin.py:151} INFO - 
+            DELETE FROM json_obras
+            WHERE CAST(ano AS INTEGER) = 2023
+            AND CAST(SPLIT_PART(mes, ' - ', 1) AS INTEGER) = 7
+        
+[2023-09-17T21:49:34.479+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:49 - Dados apagados com sucesso!
+[2023-09-17T21:49:34.480+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:49 - Inserindo dados no banco de dados.
+[2023-09-17T21:49:34.492+0000] {logging_mixin.py:151} INFO - 2023-09-17 21:49 - Dados inseridos com sucesso!
+[2023-09-17T21:49:34.493+0000] {logging_mixin.py:151} INFO - Rota '/json_obras' requisitada com sucesso! Aguardando 60 segundos para a próxima requisição...'
+[2023-09-17T21:50:34.507+0000] {logging_mixin.py:151} INFO - Crawler executado com sucesso!
+[2023-09-17T21:50:34.508+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-09-17T21:50:34.530+0000] {taskinstance.py:1398} INFO - Marking task as SUCCESS. dag_id=etl, task_id=executaCrawler, execution_date=20230917T214525, start_date=20230917T214527, end_date=20230917T215034
+[2023-09-17T21:50:34.575+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-09-17T21:50:34.598+0000] {taskinstance.py:2776} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -19,6 +19,10 @@ def criaEngine() -> Engine:
     )
     return engine
 
+def verificaTabelaExiste(engine: Engine, nomeTabela: str) -> bool:
+    inspector = sa.inspect(engine)
+    return nomeTabela in inspector.get_table_names()
+
 
 class Report:
 
@@ -58,7 +62,9 @@ class Report:
         """
         df: pd.DataFrame = self.parseJson()
         engine: Engine = criaEngine()
-        self._apagaDadosDb(engine, str(self.__path).replace('/', ''))
+
+        if verificaTabelaExiste(engine, str(self.__path).replace('/', '')):
+            self._apagaDadosDb(engine, str(self.__path).replace('/', ''))
         print(
             f"{datetime.now().strftime('%Y-%m-%d %H:%M')} - Inserindo dados no banco de dados.")
         df['data_criacao_registro'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

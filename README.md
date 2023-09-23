@@ -25,4 +25,4 @@ dbt run -t prod
 julioszeferino@gmail.com
 senha 123.AFVCy
 
-sudo chown julio:julio metabase-data
+sudo chown julio:julio docker/metadb

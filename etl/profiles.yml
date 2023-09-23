@@ -14,7 +14,7 @@ despesas:
       host: "{{ env_var('DB_TCC_HOST') }}"
       user: "{{ env_var('DB_TCC_USER') }}"
       password: "{{ env_var('DB_TCC_PASS') }}"
-      port: "{{ env_var('DB_TCC_PORT') }}"
+      port: 5432
       dbname: "{{ env_var('DB_TCC_DBNAME') }}"
       schema: julio_zeferino
       keepalives_idle: 0
@@ -25,7 +25,7 @@ despesas:
       host: "{{ env_var('DB_TCC_HOST') }}"
       user: "{{ env_var('DB_TCC_USER') }}"
       password: "{{ env_var('DB_TCC_PASS') }}"
-      port: "{{ env_var('DB_TCC_PORT') }}"
+      port: 5432
       dbname: "{{ env_var('DB_TCC_DBNAME') }}"
       schema: warehouse
       keepalives_idle: 0

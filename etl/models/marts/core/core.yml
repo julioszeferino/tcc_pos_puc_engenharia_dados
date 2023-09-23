@@ -55,7 +55,7 @@ models:
         tests:
           - not_null
 
-  - name: fato_diarias_pagamentos
+  - name: fato_despesas
     columns:
       - name: id_tempo
         type: int

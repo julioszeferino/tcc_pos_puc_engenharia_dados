@@ -11,11 +11,12 @@ def executaCrawler():
 
 @task()
 def dbtRun():
-    comando: str = "cd /opt/airflow/dbt/etl && dbt run -t prod"
+    comando: str = "cd /opt/airflow/dbt/etl && dbt deps && dbt run -t prod"
     print(f"Executando o comando <{comando}>")
     import subprocess
     resultado: subprocess.CompletedProcess = subprocess.run(comando, shell=True, capture_output=True, text=True)
-    print(f"Resultado: {resultado.stdout}")
+    if int(resultado.returncode) != 0:
+        raise Exception(f"Falha ao executar o comando dbt run. \nErro:  {resultado.stdout}")
 
 @dag(
     dag_id="etl",
@@ -27,6 +28,7 @@ def dbtRun():
 )
 def dag_etl():
 
-    executaCrawler() >> dbtRun()
+    # executaCrawler() >> dbtRun()
+    dbtRun()
 
 dag_etl = dag_etl()

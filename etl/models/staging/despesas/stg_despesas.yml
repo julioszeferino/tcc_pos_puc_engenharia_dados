@@ -3,4 +3,5 @@ version: 2
 models:
   - name: stg_diarias
   - name: stg_pagamentos
+  - name: stg_obras
   - name: str_datas

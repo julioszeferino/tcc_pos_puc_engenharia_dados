@@ -83,3 +83,6 @@ models:
               values:
                 - 'DIARIA'
                 - 'PAGAMENTO'
+                - 'OBRA'
+      - name: valor_despesa
+        type: float

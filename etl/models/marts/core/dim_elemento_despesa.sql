@@ -5,21 +5,33 @@ WITH nulos_logicos AS (
         NOW() as data_criacao_registro
 ), nf_diarias AS (
     SELECT DISTINCT
-        CASE
-            WHEN TRIM(subtitulo) IS NOT NULL THEN TRIM(subtitulo)
-            ELSE TRIM(SPLIT_PART(elemento_despesa, '-', 2))
-        END as elemento_despesa
+        COALESCE(
+            (CASE
+                WHEN REGEXP_REPLACE(TRIM(subtitulo), '[^a-zA-Z]', '') <> '' THEN TRIM(subtitulo)
+                ELSE NULL
+            END),
+            TRIM(SPLIT_PART(elemento_despesa, '-', 2))
+        ) as elemento_despesa
     FROM {{ ref('stg_diarias')}}
 ), nf_pagamentos as (
     SELECT DISTINCT
-        TRIM(SPLIT_PART(elemento_despesa, '-', 2)) as elemento_despesa
+        COALESCE(
+            (CASE
+                WHEN REGEXP_REPLACE(TRIM(subtitulo), '[^a-zA-Z]', '') <> '' THEN TRIM(subtitulo)
+                ELSE NULL
+            END),
+            TRIM(SPLIT_PART(elemento_despesa, '-', 2))
+        ) as elemento_despesa
     FROM {{ ref('stg_pagamentos')}}
 ), nf_obras as (
     SELECT DISTINCT
-        CASE
-            WHEN TRIM(subtitulo) IS NOT NULL THEN TRIM(subtitulo)
-            ELSE TRIM(SPLIT_PART(elemento_despesa, '-', 2))
-        END as elemento_despesa
+        COALESCE(
+            (CASE
+                WHEN REGEXP_REPLACE(TRIM(subtitulo), '[^a-zA-Z]', '') <> '' THEN TRIM(subtitulo)
+                ELSE NULL
+            END),
+            TRIM(SPLIT_PART(elemento_despesa, '-', 2))
+        ) as elemento_despesa
     FROM {{ ref('stg_obras')}}
 ), final as (
     SELECT
@@ -40,7 +52,6 @@ SELECT DISTINCT
     UPPER(elemento_despesa) as elemento_despesa,
     NOW() as data_criacao_registro
 FROM final
-WHERE TRIM(elemento_despesa) IS NOT NULL
 UNION
 SELECT
     id,

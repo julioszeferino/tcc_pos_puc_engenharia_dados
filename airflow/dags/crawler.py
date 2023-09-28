@@ -114,7 +114,8 @@ def main():
     ]
 
     periodoReferencia = (
-        datetime.now() - relativedelta(months=int(os.getenv("TCC_PERIODO"))))
+        datetime.now() - relativedelta(months=int(os.getenv("TCC_PERIODO")))
+    )
     print(f"Período de referência: {periodoReferencia.strftime('%m/%Y')}")
     mesReferencia = periodoReferencia.month
     anoReferencia = periodoReferencia.year

@@ -2,10 +2,13 @@ WITH diarias AS (
     SELECT
         CAST(ano AS INTEGER) as ano,
         CAST(SPLIT_PART(mes, ' - ', 1) AS INTEGER) as mes,
-        CASE
-            WHEN TRIM(subtitulo) IS NOT NULL THEN UPPER(TRIM(subtitulo))
-            ELSE UPPER(TRIM(SPLIT_PART(elemento_despesa, '-', 2)))
-        END as elemento_despesa,
+        COALESCE(
+            (CASE
+                WHEN REGEXP_REPLACE(TRIM(subtitulo), '[^a-zA-Z]', '') <> '' THEN TRIM(subtitulo)
+                ELSE NULL
+            END),
+            TRIM(SPLIT_PART(elemento_despesa, '-', 2))
+        ) as elemento_despesa,
         UPPER(nome_favorecido) as nome_favorecido,
         'DIARIA' as tipo_despesa,
         valor as valor_despesa
@@ -14,10 +17,13 @@ WITH diarias AS (
     SELECT
         CAST(ano AS INTEGER) as ano,
         CAST(SPLIT_PART(mes, ' - ', 1) AS INTEGER) as mes,
-        CASE
-            WHEN TRIM(subtitulo) IS NOT NULL THEN UPPER(TRIM(subtitulo))
-            ELSE UPPER(TRIM(SPLIT_PART(elemento_despesa, '-', 2)))
-        END as elemento_despesa,
+        COALESCE(
+            (CASE
+                WHEN REGEXP_REPLACE(TRIM(subtitulo), '[^a-zA-Z]', '') <> '' THEN TRIM(subtitulo)
+                ELSE NULL
+            END),
+            TRIM(SPLIT_PART(elemento_despesa, '-', 2))
+        ) as elemento_despesa,
         UPPER(nome_favorecido) as nome_favorecido,
         'PAGAMENTO' as tipo_despesa,
         valor as valor_despesa
@@ -26,10 +32,13 @@ WITH diarias AS (
     SELECT
         CAST(ano AS INTEGER) as ano,
         CAST(SPLIT_PART(mes, ' - ', 1) AS INTEGER) as mes,
-        CASE
-            WHEN TRIM(subtitulo) IS NOT NULL THEN UPPER(TRIM(subtitulo))
-            ELSE UPPER(TRIM(SPLIT_PART(elemento_despesa, '-', 2)))
-        END as elemento_despesa,
+        COALESCE(
+            (CASE
+                WHEN REGEXP_REPLACE(TRIM(subtitulo), '[^a-zA-Z]', '') <> '' THEN TRIM(subtitulo)
+                ELSE NULL
+            END),
+            TRIM(SPLIT_PART(elemento_despesa, '-', 2))
+        ) as elemento_despesa,
         UPPER(nome_favorecido) as nome_favorecido,
         'OBRA' as tipo_despesa,
         valor as valor_despesa

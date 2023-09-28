@@ -192,7 +192,6 @@ services:
 
     dw:
         image: postgres
-        restart: always
         environment:
             POSTGRES_USER: julio
             POSTGRES_DB: despesas
@@ -205,31 +204,11 @@ services:
             - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
             - pgdw:/var/lib/postgresql/data
 
-    # metadb:
-        # image: postgres
-        # restart: always
-        # environment:
-        #     POSTGRES_USER: metabase
-        #     POSTGRES_DB: metabase
-        #     POSTGRES_PASSWORD: metabase
-        # networks:
-        #     - tcc-network
-        # ports:
-        #     - 5432
-        # volumes:
-        #     - ./docker/metadb:/var/lib/postgresql/data:rw
-
 
     metabase:
         image: metabase/metabase
         container_name: metabase
         environment:
-            # - MB_DB_TYPE=postgres
-            # - MB_DB_DBNAME=metabase
-            # - MB_DB_PORT=5432
-            # - MB_DB_USER=metabase
-            # - MB_DB_PASS=metabase
-            # - MB_DB_HOST=metadb
             - MB_DB_TYPE=h2
             - MB_DB_FILE=/metabase-data/metabase.db
         ports:

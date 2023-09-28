@@ -8,7 +8,7 @@
 - Toda a execução do projeto é orquestrada pelo `Apache Airflow`.
 - Ao final, a análise dos dados é disponibilizada via `Metabase`.
 
-![Alt text](docs/media/arquitetura.png "Fluxo de Dados")
+![Alt text](docs/media/arquitetura-corrigido.png "Fluxo de Dados")
 
 ## Stack de Tecnologias
 - [Apache Airflow v2.7.1](https://airflow.apache.org/)

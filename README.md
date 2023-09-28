@@ -58,7 +58,7 @@ No projeto, foi desenvolvido um modelo multidimensional no Data Warehouse que or
 Esse modelo multidimensional é essencial para a análise eficaz dos dados do projeto, permitindo insights significativos e contribuindo para a tomada de decisões informadas.
 
 ## Como Executar o Projeto
-Para executar o projeto, utilize o ambiente `Docker``. Você pode inicializá-lo com o gerenciador `docker-compose` executando o seguinte comando no terminal:
+Para executar o projeto, utilize o ambiente `Docker`. Você pode inicializá-lo com o gerenciador `docker-compose` executando o seguinte comando no terminal:
 
 ```bash
 $ docker compose up -d

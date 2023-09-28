@@ -1,6 +1,6 @@
 # Criação de um Processo de ELT utilizando Python, Airflow, DBT e Metabase
 
-> Fluxo de dados que coleta os dados de uma API, realiza o tratamento de dados, modelagem dimensional e criação de painel com indicadores de análise. Projeto construído como trabalho de conclusão de curso da Pós-Graduação em Engenharia de Dados.
+> Fluxo de dados que coleta os dados de uma API, realiza o tratamento de dados, modelagem dimensional e criação de painel com indicadores de análise. Projeto construído como trabalho de conclusão de curso da Pós-Graduação em Engenharia de Dados da PUC Minas.
 
 - O pipeline foi criado a partir dos dados disponibilizados pela API de despesas da prefeitura de Três Corações-MG.
 - O projeto extrai os dados da API utilizando a linguagem `Python` e realiza o tratamento e modelagem dos dados utilizando o `DBT`.

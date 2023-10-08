@@ -61,13 +61,14 @@ Esse modelo multidimensional é essencial para a análise eficaz dos dados do pr
 Para executar o projeto, utilize o ambiente `Docker`. Você pode inicializá-lo com o gerenciador `docker-compose` executando o seguinte comando no terminal:
 
 ```bash
+$ docker compose build
 $ docker compose up -d
 ```
 
 Este comando iniciará o projeto em segundo plano, permitindo que você comece a trabalhar com ele. Certifique-se de que o Docker e o Docker Compose estejam instalados e configurados corretamente antes de executar esse comando.
 
 ## Dashboard
-![Alt text](docs/media/dashboard.gif)
+![Alt text](docs/media/dashboard-novo.gif)
 Para acessar o dashboard, basta utilizar o seguinte endereço: http://localhost:3000. Utilize as seguintes credenciais de acesso:
 
 **login**: julioszeferino@gmail.com

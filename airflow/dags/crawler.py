@@ -38,9 +38,36 @@ class Report:
     def _get_url(self) -> str:
         return "https://" + self.__controller + self.__path + f"?ano={self.__anoReferencia}&mes={self.__mesReferencia}"
 
+    def _get_tipo_carga(self) -> str:
+        engine: Engine = criaEngine()
+        if verificaTabelaExiste(engine, str(self.__path).replace('/', '')):
+            carga = 'incremental'
+        else:
+            carga = 'full'
+        engine.dispose()
+        return carga
+
+
     def run(self) -> None:
-        self._requisitaApi()
-        self.insereDados()
+
+        _CARGA: str = self._get_tipo_carga()
+        print("Tipo de carga definida como: " + _CARGA)
+
+        if _CARGA == 'incremental':
+            self._requisitaApi()
+            self.insereDados()
+        elif _CARGA == 'full':
+            dataRequisicao = datetime.now()
+            dataMesAnterior = dataRequisicao - relativedelta(months=1)
+            periodoFull = 6
+            for referencia in range(periodoFull):
+                self.__mesReferencia = dataMesAnterior.month
+                self.__anoReferencia = dataMesAnterior.year
+                self._requisitaApi()
+                self.insereDados()
+                dataMesAnterior = dataMesAnterior - relativedelta(months=1)
+
+
 
     def _requisitaApi(self) -> None:
         """
@@ -55,6 +82,7 @@ class Report:
             raise Exception(
                 "Erro ao requisitar a URL: {url}. Status Code: {dados.status_code}. Erro: {dados.text}")
         self.__data: httpx.Response = dados
+
 
     def insereDados(self) -> None:
         """
@@ -74,6 +102,7 @@ class Report:
             f"{datetime.now().strftime('%Y-%m-%d %H:%M')} - Dados inseridos com sucesso!")
         engine.dispose()
 
+
     def parseJson(self) -> pd.DataFrame:
         """
         Função que converte o JSON obtido pela API em um DataFrame.
@@ -82,6 +111,7 @@ class Report:
         dadosJson = json.loads(dadosDict['string']['#text'])
         df = pd.DataFrame(dadosJson)
         return df
+
 
     def _apagaDadosDb(self, engine: Engine, tabela: str) -> None:
         """
@@ -99,6 +129,7 @@ class Report:
         engine.execute(_sql)
         print(
             f"{datetime.now().strftime('%Y-%m-%d %H:%M')} - Dados apagados com sucesso!")
+
 
 
 def main():

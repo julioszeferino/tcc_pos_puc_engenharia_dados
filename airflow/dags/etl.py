@@ -22,7 +22,8 @@ def dbtRun():
     dag_id="etl",
     description="ETL de dados do projeto de despesas",
     start_date=datetime(2022, 9, 14),
-    schedule_interval=None,
+    # executar todo dia 01
+    schedule_interval="0 0 1 * *",
     tags=["pipeline", "dw"],
     catchup=False
 )

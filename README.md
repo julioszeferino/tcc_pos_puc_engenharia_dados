@@ -65,6 +65,12 @@ $ docker compose build
 $ docker compose up -d
 ```
 
+- Credenciais Apache Airflow:
+
+**login**: airflow
+
+**senha**: airflow
+
 Este comando iniciará o projeto em segundo plano, permitindo que você comece a trabalhar com ele. Certifique-se de que o Docker e o Docker Compose estejam instalados e configurados corretamente antes de executar esse comando.
 
 ## Dashboard
@@ -73,7 +79,7 @@ Para acessar o dashboard, basta utilizar o seguinte endereço: http://localhost:
 
 **login**: julioszeferino@gmail.com
 
-**senha**: 123.AFVCy
+**senha**: juztc206
 
 O dashboard fornece uma interface interativa para análise de dados e visualização de informações relevantes do projeto.
 
